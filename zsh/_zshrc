@@ -1,0 +1,99 @@
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
+
+export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+eval "$(rbenv init -)"
+
+export PATH="/usr/local/bin:${PATH}"
+
+eval $(thefuck --alias)
+
+export EDITOR=nvim
+
+# =========================================
+# CUTOMIZE STATUS BAR
+
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+is_git_repo() {
+  git rev-parse --git-dir > /dev/null 2>&1
+}
+
+function git_color {
+  local git_status="$(git status 2> /dev/null)"
+
+  if [[ ! $git_status =~ "working tree clean" ]]; then
+    echo -e "%F{red}" 
+  elif [[ $git_status =~ "Your branch is ahead of" ]]; then
+    echo -e "%F{yellow}" 
+  elif [[ $git_status =~ "Your branch is behind" ]]; then
+    echo -e "%F{yellow}" 
+  elif [[ $git_status =~ "nothing to commit" ]]; then
+    echo -e "%F{green}" 
+  else
+    echo -e "%F{red}" 
+  fi
+}
+
+prompt_func() {
+  if is_git_repo; then
+    echo "$(git_color)[$(parse_git_branch)]$f"
+  fi
+  # PROMPT="${COLOR_WHITE}\w${branch}${COLOR_RESET}$ "
+  # PROMPT="%1~ $ "
+}
+
+setopt PROMPT_SUBST
+
+PROMPT='%F{blue}%3~$(prompt_func)%f%F{red}%F{black}$%f '
+
+# =========================================
+#
+list_branches() {
+  i=0
+  branches=`git branch`
+  echo "$branches" | while read line ; do
+    let "i += 1"
+    if [ "${line:0:1}" = "*" ]; then
+      echo "${line}"
+    else
+      echo $i "${line}"
+    fi
+  done
+  read -e -p "Select branch: " N
+  selected=`echo "$branches" | sed -n "$N"p`
+  checkout_cmd="git checkout `echo $selected | tr -d ' '`"
+  echo "${checkout_cmd}"
+  $checkout_cmd
+}
+alias b="list_branches"
+
+# =========================================
+
+alias vim="nvim"
+
+alias guard="bundle exec guard"
+alias foreman="bundle exec foreman"
+
+alias unchanged="git update-index --assume-unchanged"
+alias nounchanged="git update-index --no-assume-unchanged"
+
+alias t="yarn test"
+alias tt="yarn coverage:bundle"
+alias ts="yarn tsc:bundle"
+
+alias rebase="git pull --rebase origin master"
+alias bm="git checkout master"
+alias reset="git reset --hard HEAD"
+
+alias f=fuck
+
+# =========================================
+
+source ~/.zshrc.local

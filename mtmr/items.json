@@ -1,0 +1,148 @@
+[
+  // Show default toolbar
+  {
+    "type": "exitTouchbar",
+    "title": "×",
+    "align": "left",
+    "width": 30,
+    "bordered": false
+  },
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "left",
+    "width": 20,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Brightness
+  {
+    "type": "brightnessDown",
+    "width": 60,
+    "align": "left",
+    "bordered": false
+  },
+  {
+    "type": "brightnessUp",
+    "align": "left",
+    "width": 60,
+    "bordered": false
+  },
+  
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "left",
+    "width": 50,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Time
+  {
+    "type": "timeButton",
+    "formatTemplate": "E   d MMM   HH:mm",
+    "align": "right",
+    "bordered": false
+  },
+
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "right",
+    "width": 5,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Input source
+  {
+    "type": "inputsource",
+    "align": "right",
+    "bordered": false
+  },
+
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "right",
+    "width": 5,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Battery
+  {
+    "type": "battery",
+    "align": "right",
+    "bordered": false
+  },
+
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "right",
+    "width": 30,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Media
+  {
+    "type": "previous",
+    "width": 60,
+    "align": "right",
+    "bordered": false
+  },
+  {
+    "type": "play",
+    "align": "right",
+    "width": 60,
+    "bordered": false
+  },
+  {
+    "type": "next",
+    "width": 60,
+    "align": "right",
+    "bordered": false
+  },
+
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "right",
+    "width": 20,
+    "bordered": false,
+    "title": ""
+  },
+
+  // Volume
+  {
+    "type": "mute",
+    "bordered": false,
+    "align": "right",
+    "width": 60
+  },
+  {
+    "type": "volumeDown",
+    "align": "right",
+    "width": 60,
+    "bordered": false
+  },
+  {
+    "type": "volumeUp",
+    "width": 60,
+    "align": "right",
+    "bordered": false
+  },
+
+  // Spacer
+  {
+    "type": "staticButton",
+    "align": "right",
+    "width": 10,
+    "bordered": false,
+    "title": ""
+  }
+]
