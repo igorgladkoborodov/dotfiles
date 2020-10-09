@@ -19,4 +19,9 @@ rm ~/Library/LaunchAgents/com.user.loginscript.plist
 cp ${PWD}/autorun/com.user.loginscript.plist ~/Library/LaunchAgents/com.user.loginscript.plist
 launchctl load ~/Library/LaunchAgents/com.user.loginscript.plist
 
+echo "Setup Karabiner Elements"
+rm -rf ~/.config/karabiner
+mkdir ~/.config/karabiner
+ln -s ${PWD}/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+
 echo "Done"
