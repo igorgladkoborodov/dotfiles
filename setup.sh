@@ -22,6 +22,6 @@ launchctl load ~/Library/LaunchAgents/com.user.loginscript.plist
 echo "Setup Karabiner Elements"
 rm -rf ~/.config/karabiner
 mkdir ~/.config/karabiner
-ln -s ${PWD}/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
+cp ${PWD}/karabiner/karabiner.json ~/.config/karabiner/karabiner.json
 
 echo "Done"

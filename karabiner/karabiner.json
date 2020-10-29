@@ -62,7 +62,7 @@
                         "manipulators": [
                             {
                                 "from": {
-                                    "key_code": "8",
+                                    "key_code": "7",
                                     "modifiers": {
                                         "mandatory": [
                                             "fn"
